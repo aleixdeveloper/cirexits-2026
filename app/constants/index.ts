@@ -1,0 +1,4 @@
+const QUESTION_SCORE = 1;
+const PIECE_SCORE = 1;
+
+export { QUESTION_SCORE, PIECE_SCORE };
