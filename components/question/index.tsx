@@ -145,7 +145,7 @@ export const QuestionText = ({ text }: { text: string }) => {
     <div
       className="text-balance font-extrabold"
       style={{
-        fontSize: `clamp(20px, ${-0.14 * text.length + 53.8}px, 50px)`,
+        fontSize: `clamp(20px, ${-0.088 * text.length + 42}px, 40px)`,
         lineHeight: 1.4
       }}
     >
