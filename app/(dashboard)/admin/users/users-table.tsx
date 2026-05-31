@@ -17,6 +17,7 @@ import {
 import { User } from './user';
 import { useState } from 'react';
 import { sortArrayByColumn, UserWithScore } from './utils';
+import { cn } from '@/lib/utils';
 
 const headerMap: Partial<
   Record<keyof UserWithScore, { label: string; type: 'text' | 'number' }>
@@ -29,8 +30,8 @@ const headerMap: Partial<
     label: 'Cirèxits',
     type: 'number'
   },
-  solved_questions_count: {
-    label: 'Preguntes resoltes',
+  correct_answers: {
+    label: 'Respostes correctes',
     type: 'number'
   },
   score: {
@@ -73,10 +74,13 @@ export function UsersTable({
         <Table>
           <TableHeader>
             <TableRow>
-              {Object.entries(headerMap).map(([field, { label }]) => (
+              {Object.entries(headerMap).map(([field, { label, type }]) => (
                 <TableHead
                   key={field}
-                  className="px-0.5 text-xxs sm:text-xs"
+                  className={cn(
+                    'px-0.5 text-xxs sm:text-xs',
+                    type === 'number' ? 'text-right' : 'text-left'
+                  )}
                   onClick={() => {
                     setOrderBy(field);
                     setOrder(order === 'asc' ? 'desc' : 'asc');

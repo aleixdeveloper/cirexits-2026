@@ -30,7 +30,7 @@ export type SelectUser = typeof users.$inferSelect;
 export type BasicUser = Pick<SelectUser, 'id' | 'name'>;
 export type SelectUserWithCount = SelectUser & {
   found_count: number;
-  solved_questions_count?: number;
+  correct_answers?: number;
 };
 
 export const pieces = pgTable('pieces', {

@@ -5,7 +5,7 @@ export type UserWithScore = {
   id: string;
   name: string;
   found_count: number;
-  solved_questions_count?: number;
+  correct_answers?: number;
   score: number;
 };
 
@@ -14,10 +14,10 @@ export const addScoreToUsers = (
 ): UserWithScore[] => {
   return users.map((user) => ({
     ...user,
-    score: 1 /* calculateScore({
+    score: calculateScore({
       pieces: user.found_count,
-      questions: user.solved_questions_count
-    }) */
+      question: user.correct_answers ?? 0
+    })
   }));
 };
 
