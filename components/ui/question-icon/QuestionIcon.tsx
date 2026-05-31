@@ -1,12 +1,15 @@
+import { CheckSvg } from './CheckSvg';
 import { QuestionSvg, QuestionSvgProps } from './QuestionSvg';
+import { WrongSvg } from './WrongSvg';
 
 type Props = QuestionSvgProps & {
   points?: string;
   label?: string;
   isFullPage?: boolean;
+  isCorrect?: null | boolean;
 };
 export const QuestionIcon = (props: Props) => {
-  const { points, label, isFullPage = false, ...rest } = props;
+  const { points, label, isFullPage = false, isCorrect, ...rest } = props;
   return (
     <div
       style={{
@@ -16,7 +19,13 @@ export const QuestionIcon = (props: Props) => {
         padding: '10px'
       }}
     >
-      <QuestionSvg {...rest} />
+      {isCorrect === null || isCorrect === undefined ? (
+        <QuestionSvg {...rest} />
+      ) : isCorrect ? (
+        <CheckSvg {...rest} />
+      ) : (
+        <WrongSvg {...rest} />
+      )}
       {points && (
         <div
           style={{

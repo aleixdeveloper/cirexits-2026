@@ -1,3 +1,5 @@
+import { LayoutSvg } from './LayoutSvg';
+
 export type QuestionSvgProps = {
   backgroundColor: string;
   width?: string;
@@ -8,50 +10,21 @@ export const QuestionSvg = (props: Partial<QuestionSvgProps>) => {
   const { width = '100%', height = '100%', backgroundColor } = props;
 
   return (
-    <svg
-      fill={backgroundColor}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      id="check-mark-circle-2"
-      data-name="Flat Line"
-      xmlns="http://www.w3.org/2000/svg"
-      className="icon flat-line"
-    >
-      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
-
-      <g
-        id="SVGRepo_tracerCarrier"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+    <LayoutSvg width={width} height={height}>
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke={backgroundColor}
+        strokeWidth="1.5"
       />
-
-      <g id="SVGRepo_iconCarrier">
-        <polyline
-          id="primary"
-          points="21 5 12 14 8 10"
-          style={{
-            fill: 'none',
-            stroke: backgroundColor,
-            strokeLinecap: 'round',
-            strokeLinejoin: 'round',
-            strokeWidth: 2
-          }}
-        />
-
-        <path
-          id="primary-2"
-          data-name="primary"
-          d="M20.94,11A8.26,8.26,0,0,1,21,12a9,9,0,1,1-9-9,8.83,8.83,0,0,1,4,1"
-          style={{
-            fill: 'none',
-            stroke: backgroundColor,
-            strokeLinecap: 'round',
-            strokeLinejoin: 'round',
-            strokeWidth: 2
-          }}
-        />
-      </g>
-    </svg>
+      <path
+        d="M10.125 8.875C10.125 7.83947 10.9645 7 12 7C13.0355 7 13.875 7.83947 13.875 8.875C13.875 9.56245 13.505 10.1635 12.9534 10.4899C12.478 10.7711 12 11.1977 12 11.75V13"
+        stroke={backgroundColor}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="16" r="1" fill={backgroundColor} />
+    </LayoutSvg>
   );
 };

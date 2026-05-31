@@ -13,12 +13,20 @@ const bg_lightness = '85%';
 const text_saturation = '55%';
 const text_lightness = '45%';
 
+export type SubmissionResult = {
+  isCorrect: boolean;
+  correctAnswer: 'A' | 'B' | 'C';
+  selectedAnswer: 'A' | 'B' | 'C';
+};
+
 export const Question = ({
   question,
-  onSubmitAnswer
+  onSubmitAnswer,
+  submissionResult
 }: {
   question: QuestionType;
   onSubmitAnswer: (choice: 'A' | 'B' | 'C') => void;
+  submissionResult?: SubmissionResult | null;
 }) => {
   const { open: imageModalIsOpen, openDialog, closeDialog } = useDialog();
   const [selected, setSelected] = useState<'A' | 'B' | 'C' | null>(null);
@@ -52,16 +60,31 @@ export const Question = ({
                 return (
                   <div
                     key={option}
-                    style={{
-                      backgroundColor:
-                        selected === choice
-                          ? `hsl(${hue},${bg_saturation},${bg_lightness})`
-                          : ''
-                    }}
+                    style={
+                      submissionResult
+                        ? choice === submissionResult.correctAnswer
+                          ? {
+                              backgroundColor: '#bbf7d0',
+                              border: '2px solid #16a34a'
+                            }
+                          : choice === submissionResult.selectedAnswer &&
+                              !submissionResult.isCorrect
+                            ? {
+                                backgroundColor: '#fecaca',
+                                border: '2px solid #dc2626'
+                              }
+                            : {}
+                        : selected === choice
+                          ? {
+                              backgroundColor: `hsl(${hue},${bg_saturation},${bg_lightness})`
+                            }
+                          : {}
+                    }
                     className={cn(
                       'flex gap-2 justify-center items-center rounded-md p-2'
                     )}
                     onClick={() => {
+                      if (submissionResult) return;
                       setSelected(choice);
                     }}
                   >
@@ -88,14 +111,14 @@ export const Question = ({
               })}
             </OptionsContainer>
             <Button
-              disabled={!selected}
+              disabled={!selected || !!submissionResult}
               className="text-xl"
               onClick={() => {
-                if (!selected) return;
+                if (!selected || submissionResult) return;
                 onSubmitAnswer(selected);
               }}
             >
-              Enviar
+              {submissionResult ? 'Resposta enviada' : 'Enviar'}
             </Button>
           </div>
         </div>
