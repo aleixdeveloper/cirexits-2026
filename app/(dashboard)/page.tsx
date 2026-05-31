@@ -24,7 +24,7 @@ export default async function MainPage() {
           cherryColorStem={mapColor[stemVariants[1]]}
           cherryColorDark={cherryColorVariants[4][1]}
           cherryColorLight={cherryColorVariants[4][0]}
-          backgroundColor={mapBackgroundColor[backgroundColorVariants[1]]}
+          backgroundColor={mapBackgroundColor[backgroundColorVariants[2]]}
           width="200px"
           height="200px"
         />

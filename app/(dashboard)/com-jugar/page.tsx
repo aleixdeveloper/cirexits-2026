@@ -6,7 +6,7 @@ import { InstagramIcon } from 'lucide-react';
 
 export default async function HowToPlay() {
   return (
-    <div className="flex flex-wrap gap-2 justify-center px-4 leading-6">
+    <div className="flex flex-wrap items-center mx-auto max-w-xl h-full gap-2 justify-center px-4 leading-6">
       <h1>Com es juga?</h1>
       <p>
         El joc consisteix en trobar les peces anomenades{' '}
@@ -21,7 +21,7 @@ export default async function HowToPlay() {
         </p>
         <div className="w-[30%]">
           <CherrySvg
-            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.BLUE]}
+            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.YELLOW]}
             shape="circle"
           />
         </div>
@@ -29,7 +29,7 @@ export default async function HowToPlay() {
       <div className="flex gap-2">
         <div className="w-[30%]">
           <QuestionIcon
-            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.YELLOW]}
+            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.BLUE]}
           />
         </div>
         <p className="w-[70%]">
