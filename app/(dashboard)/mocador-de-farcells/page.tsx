@@ -38,7 +38,7 @@ export default async function MocadorDeFarcellsPage(props: {}) {
           <h2>Mocador de fer farcells</h2>
           <div className="flex ml-auto items-center gap-2 font-bold">
             <p>{piecesFoundByUser.length} cirèxits</p>+
-            <p>{solvedQuestion.length} preguntes</p>=
+            <p>{solvedQuestion.length} encerts</p>=
             {/*  <div className="border-2 border-black rounded-xs font-bold px-2 py-1 bg-highlight">
               {totalPoints} {totalPoints === 1 ? 'punt' : ' punts'}
             </div> */}
@@ -76,27 +76,28 @@ export default async function MocadorDeFarcellsPage(props: {}) {
       </div>
       <div className="flex flex-col">
         <div className="flex pt-2 gap-3 items-center">
-          <h3>Preguntes</h3>
+          <h3>Encerts</h3>
           <p>({solvedQuestion.length})</p>
         </div>
-        <p>I tots les preguntes que has respost correctament!</p>
+        <p>I totes les preguntes que has respost correctament!</p>
       </div>
       <div className="h-full">
         <div className="flex items-start justify-center gap-x-1 gap-y-2 flex-wrap">
-          {solvedQuestion.map((item, index) => {
+          {solvedQuestion.map((_item, index) => {
             return (
-              <Link href={`/question/${item}`} key={index}>
-                <div
-                  key={index}
-                  style={{ width: CAPTCHA_WIDTH, height: CAPTCHA_HEIGHT }}
-                >
-                  <QuestionIcon
-                    backgroundColor={getColorByIndex(13, index)}
-                    points={`+${QUESTION_SCORE} punts`}
-                    //label={questionMap[item as CAPTCHA_CATEGORY]?.short}
-                  />
-                </div>
-              </Link>
+              <div
+                key={index}
+                style={{ width: CAPTCHA_WIDTH, height: CAPTCHA_HEIGHT }}
+              >
+                <QuestionIcon
+                  backgroundColor={getColorByIndex(180, index, {
+                    saturation: '75%',
+                    lightness: '70%'
+                  })}
+                  points={`+${QUESTION_SCORE} punt${QUESTION_SCORE === 1 ? '' : 's'}`}
+                  //label={questionMap[item as CAPTCHA_CATEGORY]?.short}
+                />
+              </div>
             );
           })}
         </div>

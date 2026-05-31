@@ -29,7 +29,7 @@ export default async function MainPage() {
           height="200px"
         />
         <p className="text-center text-xl">
-          El joc d'ÈXIT SORTIDA D'EMERGÈNCIA per la Festa de la Cirera 2025 de
+          El joc d'ÈXIT SORTIDA D'EMERGÈNCIA per la Festa de la Cirera 2026 de
           Torrelles de Llobregat
         </p>
       </div>

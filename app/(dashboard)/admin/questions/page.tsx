@@ -56,9 +56,9 @@ export default async function QuestionPage() {
                 <TableCell>{question.totalAttempts}</TableCell>
                 <TableCell>{question.correctCount}</TableCell>
                 <TableCell>{question.wrongCount}</TableCell>
-                <TableCell>{question.optionDistribution.a}</TableCell>
-                <TableCell>{question.optionDistribution.b}</TableCell>
-                <TableCell>{question.optionDistribution.c}</TableCell>
+                <TableCell>{question.optionDistribution.a}%</TableCell>
+                <TableCell>{question.optionDistribution.b}%</TableCell>
+                <TableCell>{question.optionDistribution.c}%</TableCell>
               </TableRow>
             ))}
           </TableBody>

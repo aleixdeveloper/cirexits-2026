@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatDate } from '@/lib/date';
 import { getGameLog } from 'services/gameService';
+import { cn } from '@/lib/utils';
 
 export default async function LogsPage() {
   const session = await auth();
@@ -32,8 +33,7 @@ export default async function LogsPage() {
             <TableRow>
               <TableHead>ID</TableHead>
               <TableHead className="text-center">Usuari</TableHead>
-              <TableHead className="text-center">Tipus</TableHead>
-              <TableHead className="text-center">Correcte</TableHead>
+              <TableHead className="text-center">Acció</TableHead>
               <TableHead className="text-right">Data</TableHead>
             </TableRow>
           </TableHeader>
@@ -47,11 +47,26 @@ export default async function LogsPage() {
                   {log.userName ?? '-'}
                 </TableCell>
                 <TableCell className="text-center">
-                  {log.type === 'piece_found' ? 'Peça trobada' : '-'}
+                  {log.type === 'piece_found' ? (
+                    'ha trobat una cirèxit'
+                  ) : log.type === 'question_answered' ? (
+                    <span>
+                      ha respost{' '}
+                      <span
+                        className={cn(
+                          'px-1 rounded-sm',
+                          log.isCorrect ? 'bg-green-200' : 'bg-red-200'
+                        )}
+                      >
+                        {log.isCorrect ? 'correctament' : 'incorrectament'}
+                      </span>{' '}
+                      la pregunta
+                    </span>
+                  ) : (
+                    '-'
+                  )}
                 </TableCell>
-                <TableCell className="text-center">
-                  {log.isCorrect === null ? '-' : log.isCorrect ? 'Sí' : 'No'}
-                </TableCell>
+
                 <TableCell className="text-xxs sm:text-xs text-right">
                   {formatDate(log.createdAt)}
                 </TableCell>

@@ -14,9 +14,13 @@ export function hslToHex(h: number, s: number, l: number) {
 const PASTEL_SATURATION = '65%';
 const PASTEL_LIGHTNESS = '80%';
 
-export const getColorByIndex = (length: number, index: number) => {
-  const S = PASTEL_SATURATION;
-  const L = PASTEL_LIGHTNESS;
+export const getColorByIndex = (
+  length: number,
+  index: number,
+  { saturation = PASTEL_SATURATION, lightness = PASTEL_LIGHTNESS } = {}
+) => {
+  const S = saturation;
+  const L = lightness;
 
   const parts = 360 / length;
   const H = Math.round(index * parts + 10);
