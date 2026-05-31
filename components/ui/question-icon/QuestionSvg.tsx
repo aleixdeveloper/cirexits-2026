@@ -4,10 +4,11 @@ export type QuestionSvgProps = {
   backgroundColor: string;
   width?: string;
   height?: string;
+  isCorrect?: null | boolean;
 };
 
 export const QuestionSvg = (props: Partial<QuestionSvgProps>) => {
-  const { width = '100%', height = '100%', backgroundColor } = props;
+  const { width = '100%', height = '100%', backgroundColor, isCorrect } = props;
 
   return (
     <LayoutSvg width={width} height={height}>

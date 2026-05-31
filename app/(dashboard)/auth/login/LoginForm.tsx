@@ -23,10 +23,10 @@ export const LoginForm = ({ redirectUrl }: { redirectUrl: string }) => {
   return (
     <form
       action={formAction}
-      className="flex flex-col gap-6 text-lg p-4 bg-slate-100 rounded-xl border-4 border-slate-300"
+      className="flex flex-col gap-5 rounded-lg border-2 bg-card/90 p-4 text-lg shadow-[0_10px_0_hsl(var(--foreground)/0.06)]"
     >
       <input type="hidden" name="redirectUrl" value={redirectUrl} />
-      <p>
+      <p className="font-bold leading-snug">
         Si us plau, abans de començar a jugar, indica'ns el teu Nom i Cognoms
       </p>
       <Input

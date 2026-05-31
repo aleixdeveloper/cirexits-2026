@@ -29,7 +29,6 @@ export default async function MocadorDeFarcellsPage(props: {}) {
 
   const piecesFoundByUser = await getPiecesFoundByUser(session?.id);
   const questionAnsweredByUser = await getAnsweredQuestions(session?.id);
-  console.log('questionAnsweredByUser', questionAnsweredByUser);
   const correctAnswers = questionAnsweredByUser.filter(
     (item) => item.isCorrect
   ).length;
@@ -38,26 +37,26 @@ export default async function MocadorDeFarcellsPage(props: {}) {
     piecesFoundByUser.length + correctAnswers * QUESTION_SCORE;
 
   return (
-    <div className="flex flex-col gap-4 px-1 h-full ">
-      <div className="flex flex-col">
-        <div className="flex flex-wrap gap-4 justify-between items-center pb-4 border-b border-slate-500">
+    <div className="flex h-full flex-col gap-4 px-1">
+      <div className="flex flex-col rounded-lg border-2 bg-card/85 p-4 shadow-[0_10px_0_hsl(var(--foreground)/0.06)]">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 pb-4">
           <h2>Mocador de fer farcells</h2>
-          <div className="flex ml-auto items-center gap-2 font-bold">
+          <div className="ml-auto flex flex-wrap items-center gap-2 text-sm font-extrabold">
             <p>{piecesFoundByUser.length} cirèxits</p>+
             <p>{correctAnswers} encerts</p>=
-            <div className="border-2 border-black rounded-xs font-bold px-2 py-1 bg-highlight">
+            <div className="rounded-md border-2 border-foreground bg-highlight px-3 py-1 font-extrabold text-accent-foreground shadow-[0_3px_0_hsl(var(--foreground)/0.2)]">
               {totalPoints} {totalPoints === 1 ? 'punt' : ' punts'}
             </div>
           </div>
         </div>
-        <div className="flex pt-2 gap-3 items-center">
+        <div className="flex items-center gap-3 pt-3">
           <h3>Cirèxits</h3>
           <p>({piecesFoundByUser.length})</p>
         </div>
         <p>Aquí trobarás totes les cirèxits que has collit!</p>
       </div>
-      <div className="h-full ">
-        <div className="flex items-start justify-center gap-1 flex-wrap">
+      <div className="h-full rounded-lg border-2 bg-card/55 p-3">
+        <div className="flex flex-wrap items-start justify-center gap-2">
           {piecesFoundByUser.map((item, index) => {
             const backgroundColorVariant = getRandomNumber(
               0,
@@ -80,15 +79,15 @@ export default async function MocadorDeFarcellsPage(props: {}) {
           })}
         </div>
       </div>
-      <div className="flex flex-col">
-        <div className="flex pt-2 gap-3 items-center">
+      <div className="flex flex-col rounded-lg border-2 bg-card/85 p-4 shadow-[0_10px_0_hsl(var(--foreground)/0.06)]">
+        <div className="flex items-center gap-3 pt-2">
           <h3>Encerts</h3>
           <p>({correctAnswers})</p>
         </div>
         <p>I totes les preguntes que has respost!</p>
       </div>
-      <div className="h-full">
-        <div className="flex items-start justify-center gap-x-1 gap-y-2 flex-wrap">
+      <div className="h-full rounded-lg border-2 bg-card/55 p-3">
+        <div className="flex flex-wrap items-start justify-center gap-x-2 gap-y-3">
           {questionAnsweredByUser.map((item, index) => {
             const answerText =
               item.selectedOption === 'A'
@@ -125,7 +124,6 @@ export default async function MocadorDeFarcellsPage(props: {}) {
                           : undefined
                       }
                       isCorrect={item.isCorrect}
-                      //label={questionMap[item as CAPTCHA_CATEGORY]?.short}
                     />
                   </PopoverTrigger>
                   <PopoverContent align="center">

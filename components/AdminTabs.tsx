@@ -22,17 +22,17 @@ export function AdminTabs() {
     }
   ];
   return (
-    <div className="flex space-x-4 border-b mb-1 md:mb-4">
+    <div className="mb-3 flex gap-0.5 md:gap-2 overflow-x-auto rounded-lg border-2 bg-card/80 p-1 md:mb-5">
       {tabs.map((tab) => {
         const isActive = pathname.includes(tab.href);
         return (
           <Link
             key={tab.href}
             href={tab.href}
-            className={`py-1 px-2 ${
+            className={`whitespace-nowrap rounded-md px-3 py-2 text-sm font-extrabold transition-all ${
               isActive
-                ? 'border-b-2 border-blue-600 font-semibold'
-                : 'text-gray-500 hover:text-blue-500'
+                ? 'bg-primary text-primary-foreground shadow-[0_3px_0_hsl(var(--foreground)/0.14)]'
+                : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
             }`}
           >
             {tab.name}

@@ -31,7 +31,6 @@ export default async function LogsPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>ID</TableHead>
               <TableHead className="text-center">Usuari</TableHead>
               <TableHead className="text-center">Acció</TableHead>
               <TableHead className="text-right">Data</TableHead>
@@ -40,9 +39,6 @@ export default async function LogsPage() {
           <TableBody>
             {gameLog.map((log) => (
               <TableRow key={log.createdAt.toISOString()}>
-                <TableCell className="font-medium max-w-[100px]">
-                  ...{log.createdAt.toISOString().slice(-5)}
-                </TableCell>
                 <TableCell className="text-center">
                   {log.userName ?? '-'}
                 </TableCell>

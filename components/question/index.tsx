@@ -34,16 +34,16 @@ export const Question = ({
   const { question: text, optionA, optionB, optionC, imageUrl } = question;
   return (
     <>
-      <div>
+      <div className="mx-auto w-full max-w-2xl">
         <div
           style={{ minHeight: 'calc(100dvh - 100px)' }}
-          className="flex flex-col justify-between gap-2 text-center"
+          className="flex flex-col justify-between gap-4 rounded-lg border-2 bg-card/85 p-4 text-center shadow-[0_10px_0_hsl(var(--foreground)/0.06)]"
         >
           <QuestionText text={text} />
           {imageUrl && (
             <Button
               variant="success"
-              className="text-lg flex justify-center mx-auto"
+              className="mx-auto flex justify-center text-lg"
               onClick={() => openDialog()}
             >
               Veure imatge
@@ -64,14 +64,15 @@ export const Question = ({
                       submissionResult
                         ? choice === submissionResult.correctAnswer
                           ? {
-                              backgroundColor: '#bbf7d0',
-                              border: '2px solid #16a34a'
+                              backgroundColor: 'hsl(var(--success) / 0.2)',
+                              border: '2px solid hsl(var(--success))'
                             }
                           : choice === submissionResult.selectedAnswer &&
                               !submissionResult.isCorrect
                             ? {
-                                backgroundColor: '#fecaca',
-                                border: '2px solid #dc2626'
+                                backgroundColor:
+                                  'hsl(var(--destructive) / 0.2)',
+                                border: '2px solid hsl(var(--destructive))'
                               }
                             : {}
                         : selected === choice
@@ -81,7 +82,7 @@ export const Question = ({
                           : {}
                     }
                     className={cn(
-                      'flex gap-2 justify-center items-center rounded-md p-2'
+                      'flex cursor-pointer items-center justify-center gap-3 rounded-lg border-2 border-transparent bg-card/70 p-3 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-accent/50'
                     )}
                     onClick={() => {
                       if (submissionResult) return;
@@ -93,7 +94,7 @@ export const Question = ({
                         backgroundColor: `hsl(${hue},${text_saturation},${text_lightness})`
                       }}
                       className={cn(
-                        'flex text-lg aspect-square w-10 text-center justify-center items-center font-bold rounded-full text-primary-foreground'
+                        'flex aspect-square w-10 items-center justify-center rounded-full text-center text-lg font-extrabold text-primary-foreground shadow-[0_3px_0_hsl(var(--foreground)/0.16)]'
                       )}
                     >
                       {String.fromCharCode(65 + index)}
@@ -142,7 +143,7 @@ export const Question = ({
 export const QuestionText = ({ text }: { text: string }) => {
   return (
     <div
-      className="font-bold"
+      className="text-balance font-extrabold"
       style={{
         fontSize: `clamp(20px, ${-0.14 * text.length + 53.8}px, 50px)`,
         lineHeight: 1.4
@@ -165,7 +166,7 @@ export const OptionsContainer = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="flex flex-col gap-4" style={{ lineHeight: 1.3 }}>
+    <div className="flex flex-col gap-3" style={{ lineHeight: 1.3 }}>
       {children}
     </div>
   );
