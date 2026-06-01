@@ -37,7 +37,7 @@ export const Question = ({
       <div className="mx-auto w-full max-w-2xl">
         <div
           style={{ minHeight: 'calc(100dvh - 100px)' }}
-          className="flex flex-col justify-between gap-4 rounded-lg border-2 bg-card/85 p-4 text-center shadow-[0_10px_0_hsl(var(--foreground)/0.06)]"
+          className="flex flex-col justify-between gap-4 p-2 text-center"
         >
           <QuestionText text={text} />
           {imageUrl && (
@@ -146,7 +146,7 @@ export const QuestionText = ({ text }: { text: string }) => {
       className="text-balance font-extrabold"
       style={{
         fontSize: `clamp(20px, ${-0.088 * text.length + 42}px, 40px)`,
-        lineHeight: 1.4
+        lineHeight: 1.2
       }}
     >
       {text}?

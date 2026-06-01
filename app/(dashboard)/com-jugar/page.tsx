@@ -20,17 +20,12 @@ export default async function HowToPlay() {
           trobis, afegirà {PIECE_SCORE} punt a la teva puntuació total.
         </p>
         <div className="w-[30%]">
-          <CherrySvg
-            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.YELLOW]}
-            shape="circle"
-          />
+          <CherrySvg backgroundColor={'#FFF'} shape="circle" />
         </div>
       </div>
       <div className="flex gap-3 rounded-lg bg-accent/70 p-3 text-accent-foreground">
         <div className="w-[30%]">
-          <QuestionIcon
-            backgroundColor={mapBackgroundColor[BACKGROUND_COLORS.BLUE]}
-          />
+          <QuestionIcon backgroundColor={'#000'} />
         </div>
         <p className="w-[70%] font-semibold">
           A més, de tant en tant, t'apareixerà una pregunta sobre Torrelles que
@@ -45,16 +40,16 @@ export default async function HowToPlay() {
         les cirèxits que hagis collit!
       </p>
 
-      <div className="flex gap-2 rounded-full border-2 bg-card px-4 py-2 pt-2">
-        <div className="flex flex-col items-end">
-          <p className="text-right">
+      <div className="flex justify-center items-center gap-2 rounded-full border-2 bg-card px-4 py-2 pt-2">
+        <div className="flex flex-col items-center">
+          <p className="text-center">
             Més info a l'Instagram d'ÈXIT SORTIDA D'EMERGÈNCIA
           </p>
           <a href="https://www.instagram.com/exitsortidademergencia/">
             @exitsortidademergencia
           </a>
         </div>
-        <InstagramIcon />
+        <InstagramIcon className="h-8 w-8" />
       </div>
     </div>
   );

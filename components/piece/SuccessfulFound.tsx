@@ -19,7 +19,7 @@ export const SuccessfulFound = ({ userId, pieceId, children }: Props) => {
 
   useEffect(() => {
     if (pieceId) {
-      const timer_enable_link = setTimeout(() => setEnabled(true), 1000);
+      const timer_enable_link = setTimeout(() => setEnabled(true), 1500);
       const qrScanCount = storeQrScanItemToStrage(pieceId);
       if (!qrScanCount) {
         return;

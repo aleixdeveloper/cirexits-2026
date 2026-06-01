@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const CheckSvg = () => {
+export const CheckSvg = ({ width = '100%', height = '100%' }) => {
   return (
     <svg
-      width="24px"
-      height="24px"
-      viewBox="0 0 25 25"
+      width={width}
+      height={height}
+      viewBox="0 0 50 50"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
     >

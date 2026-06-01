@@ -14,6 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
+import { formatDate, getTimeAndDate } from '@/lib/date';
 
 const CAPTCHA_WIDTH = 80;
 const CAPTCHA_HEIGHT = 80;
@@ -74,12 +75,17 @@ export default async function MocadorDeFarcellsPage(props: {}) {
                 points = `${backgroundColorVariant + 1} punts`;
               }
               return (
-                <Link href={`/cirexit/${item.pieceId}`} key={index}>
-                  <CherryIconWrap
-                    key={index}
-                    backgroundColor={getPastelColor(item.hue)}
-                  />
-                </Link>
+                <Popover key={item.pieceId}>
+                  <PopoverTrigger asChild>
+                    <CherryIconWrap
+                      key={index}
+                      backgroundColor={getPastelColor(item.hue)}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent align="center">
+                    <span>Trobada {getTimeAndDate(item.foundAt)}</span>
+                  </PopoverContent>
+                </Popover>
               );
             })}
           </div>

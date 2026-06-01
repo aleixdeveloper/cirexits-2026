@@ -42,5 +42,6 @@ export async function getAnsweredQuestions(userId: string): Promise<
     })
     .from(questionAttempts)
     .innerJoin(questions, eq(questionAttempts.questionId, questions.id))
-    .where(eq(questionAttempts.userId, userId));
+    .where(eq(questionAttempts.userId, userId))
+    .orderBy(questionAttempts.answeredAt);
 }
