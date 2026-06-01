@@ -1,3 +1,4 @@
+import React from 'react';
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import {
@@ -18,7 +19,9 @@ export default async function QuestionPage() {
   }
 
   const questions = await getQuestionsWithStats();
-
+  const sortedQuestions = questions.sort((a, b) =>
+    a.question.localeCompare(b.question)
+  );
   return (
     <Card>
       <CardHeader>
@@ -28,8 +31,6 @@ export default async function QuestionPage() {
         <Table>
           <TableHeader>
             <TableRow className="text-[11px]">
-              <TableHead>ID</TableHead>
-              <TableHead>Pregunta</TableHead>
               <TableHead>Opció A</TableHead>
               <TableHead>Opció B</TableHead>
               <TableHead>Opció C</TableHead>
@@ -43,23 +44,26 @@ export default async function QuestionPage() {
             </TableRow>
           </TableHeader>
           <TableBody className="text-[11px]">
-            {questions.map((question) => (
-              <TableRow key={question.id}>
-                <TableCell className="font-medium max-w-[100px]">
-                  ...{question.id.toString().slice(-5)}
-                </TableCell>
-                <TableCell>{question.question}</TableCell>
-                <TableCell>{question.optionA}</TableCell>
-                <TableCell>{question.optionB}</TableCell>
-                <TableCell>{question.optionC}</TableCell>
-                <TableCell>{question.correctOption}</TableCell>
-                <TableCell>{question.totalAttempts}</TableCell>
-                <TableCell>{question.correctCount}</TableCell>
-                <TableCell>{question.wrongCount}</TableCell>
-                <TableCell>{question.optionDistribution.a}%</TableCell>
-                <TableCell>{question.optionDistribution.b}%</TableCell>
-                <TableCell>{question.optionDistribution.c}%</TableCell>
-              </TableRow>
+            {sortedQuestions.map((question) => (
+              <React.Fragment key={question.id}>
+                <TableRow className="py-0.5">
+                  <TableCell colSpan={10}>
+                    <b>{question.question}</b>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>{question.optionA}</TableCell>
+                  <TableCell>{question.optionB}</TableCell>
+                  <TableCell>{question.optionC}</TableCell>
+                  <TableCell>{question.correctOption}</TableCell>
+                  <TableCell>{question.totalAttempts}</TableCell>
+                  <TableCell>{question.correctCount}</TableCell>
+                  <TableCell>{question.wrongCount}</TableCell>
+                  <TableCell>{question.optionDistribution.a}%</TableCell>
+                  <TableCell>{question.optionDistribution.b}%</TableCell>
+                  <TableCell>{question.optionDistribution.c}%</TableCell>
+                </TableRow>
+              </React.Fragment>
             ))}
           </TableBody>
         </Table>
