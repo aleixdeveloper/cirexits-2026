@@ -82,7 +82,7 @@ export const Question = ({
                           : {}
                     }
                     className={cn(
-                      'flex cursor-pointer items-center justify-center gap-3 rounded-lg border-2 border-transparent bg-card/70 p-3 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-accent/50'
+                      'flex w-full cursor-pointer items-center justify-start gap-1 sm:gap-3 rounded-lg border-2 border-transparent bg-card/70 p-1 sm:p-3 text-left shadow-sm transition-all'
                     )}
                     onClick={() => {
                       if (submissionResult) return;
@@ -166,7 +166,10 @@ export const OptionsContainer = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="flex flex-col gap-3" style={{ lineHeight: 1.3 }}>
+    <div
+      className="flex w-full flex-col gap-1 sm:gap-3"
+      style={{ lineHeight: 1.3 }}
+    >
       {children}
     </div>
   );

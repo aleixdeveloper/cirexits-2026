@@ -34,7 +34,7 @@ export default async function DashboardLayout({
       <DesktopNav isAdmin={isAdmin} />
       <ModalProvider>
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-[4.5rem]">
-          <header className="sticky top-0 z-30 mx-2 mt-2 flex h-16 items-center gap-2 rounded-lg border-2 bg-card/90 px-3 shadow-[0_6px_0_hsl(var(--foreground)/0.06)] backdrop-blur sm:static sm:mx-4 sm:h-auto sm:min-h-14 sm:px-5">
+          <header className="z-30 mx-2 mt-2 flex h-16 items-center gap-2 rounded-lg border-2 bg-card/90 px-3 shadow-[0_6px_0_hsl(var(--foreground)/0.06)] backdrop-blur sm:static sm:mx-4 sm:h-auto sm:min-h-14 sm:px-5">
             <MobileNav isAdmin={isAdmin} />
             <p className="rounded-full bg-accent px-3 py-1 text-xs font-extrabold uppercase tracking-[0.14em] text-accent-foreground shadow-sm sm:text-sm">
               #ONSONLESCIREXITS

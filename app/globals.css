@@ -82,15 +82,23 @@
   }
 
   html {
-    min-height: 100%;
+    min-height: 100dvh;
   }
 
   body {
     @apply bg-background text-foreground;
-    min-height: 100%;
+    min-height: 100dvh;
     background:
-      linear-gradient(135deg, hsl(var(--secondary) / 0.58) 0 18%, transparent 18% 100%),
-      linear-gradient(315deg, hsl(var(--accent) / 0.42) 0 14%, transparent 14% 100%),
+      linear-gradient(
+        135deg,
+        hsl(var(--secondary) / 0.58) 0 18%,
+        transparent 18% 100%
+      ),
+      linear-gradient(
+        315deg,
+        hsl(var(--accent) / 0.42) 0 14%,
+        transparent 14% 100%
+      ),
       linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     font-family: var(--font-nunito);
     font-size: 15px;
@@ -98,8 +106,16 @@
 
   .dark body {
     background:
-      linear-gradient(135deg, hsl(var(--primary) / 0.18) 0 20%, transparent 20% 100%),
-      linear-gradient(315deg, hsl(var(--secondary) / 0.24) 0 16%, transparent 16% 100%),
+      linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.18) 0 20%,
+        transparent 20% 100%
+      ),
+      linear-gradient(
+        315deg,
+        hsl(var(--secondary) / 0.24) 0 16%,
+        transparent 16% 100%
+      ),
       linear-gradient(180deg, hsl(var(--background)), hsl(226 43% 6%));
   }
 }

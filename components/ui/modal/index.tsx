@@ -44,12 +44,14 @@ export const Modal = ({
             <CircleX className="h-8 w-8" />
           </button>
         )}
-        <div className="flex flex-col gap-0.5 sm:gap-2">
-          {title && <h2 className="text-xl font-bold text-center">{title}</h2>}
-          {subtitle && (
-            <h3 className="text-lg font-semibold text-center">{subtitle}</h3>
-          )}
-        </div>
+        {title && (
+          <div className="flex flex-col gap-0.5 sm:gap-2">
+            <h2 className="text-xl font-bold text-center">{title}</h2>
+            {subtitle && (
+              <h3 className="text-lg font-semibold text-center">{subtitle}</h3>
+            )}
+          </div>
+        )}
         {children}
       </div>
     </div>

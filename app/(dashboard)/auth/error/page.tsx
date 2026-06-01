@@ -8,7 +8,7 @@ interface PageProps {
 
 const ActualComp = ({ errorMessage }: { errorMessage: string }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-red-600 mb-4">Error de login</h1>
         <Alert variant="destructive" className="text-gray-700 mb-6">

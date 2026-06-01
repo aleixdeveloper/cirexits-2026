@@ -31,8 +31,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ca" suppressHydrationWarning>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+      ></meta>
       <body
-        className={`${fredoka.variable} ${nunito.variable} antialiased flex min-h-screen w-full flex-col`}
+        className={`${fredoka.variable} ${nunito.variable} antialiased flex w-full flex-col`}
       >
         <ThemeProviders>{children}</ThemeProviders>
       </body>
