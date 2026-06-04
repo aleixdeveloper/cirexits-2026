@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getQuestionsWithStats } from 'services/questionAnalyticsService';
+import { cn } from '@/lib/utils';
 
 export default async function QuestionPage() {
   const session = await auth();
@@ -38,7 +39,6 @@ export default async function QuestionPage() {
               <TableHead>Opció A</TableHead>
               <TableHead>Opció B</TableHead>
               <TableHead>Opció C</TableHead>
-              <TableHead>Opció correcta</TableHead>
               <TableHead>Total intents</TableHead>
               <TableHead>Correctes</TableHead>
               <TableHead>Incorrectes</TableHead>
@@ -48,27 +48,55 @@ export default async function QuestionPage() {
             </TableRow>
           </TableHeader>
           <TableBody className="text-[11px]">
-            {sortedQuestions.map((question) => (
-              <React.Fragment key={question.id}>
-                <TableRow className="py-0.5">
-                  <TableCell colSpan={10}>
-                    <b>{question.question}</b>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>{question.optionA}</TableCell>
-                  <TableCell>{question.optionB}</TableCell>
-                  <TableCell>{question.optionC}</TableCell>
-                  <TableCell>{question.correctOption}</TableCell>
-                  <TableCell>{question.totalAttempts}</TableCell>
-                  <TableCell>{question.correctCount}</TableCell>
-                  <TableCell>{question.wrongCount}</TableCell>
-                  <TableCell>{question.optionDistribution.a}%</TableCell>
-                  <TableCell>{question.optionDistribution.b}%</TableCell>
-                  <TableCell>{question.optionDistribution.c}%</TableCell>
-                </TableRow>
-              </React.Fragment>
-            ))}
+            {sortedQuestions.map((question) => {
+              return (
+                <React.Fragment key={question.id}>
+                  <TableRow className="py-0.5">
+                    <TableCell colSpan={10}>
+                      <b>{question.question}</b>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <span
+                        className={cn(
+                          question.correctOption === 'A' &&
+                            'font-bold bg-accent'
+                        )}
+                      >
+                        {question.optionA}
+                      </span>
+                    </TableCell>
+                    <TableCell>
+                      <span
+                        className={cn(
+                          question.correctOption === 'B' &&
+                            'font-bold bg-accent'
+                        )}
+                      >
+                        {question.optionB}
+                      </span>
+                    </TableCell>
+                    <TableCell>
+                      <span
+                        className={cn(
+                          question.correctOption === 'C' &&
+                            'font-bold bg-accent'
+                        )}
+                      >
+                        {question.optionC}
+                      </span>
+                    </TableCell>
+                    <TableCell>{question.totalAttempts}</TableCell>
+                    <TableCell>{question.correctCount}</TableCell>
+                    <TableCell>{question.wrongCount}</TableCell>
+                    <TableCell>{question.optionDistribution.a}%</TableCell>
+                    <TableCell>{question.optionDistribution.b}%</TableCell>
+                    <TableCell>{question.optionDistribution.c}%</TableCell>
+                  </TableRow>
+                </React.Fragment>
+              );
+            })}
           </TableBody>
         </Table>
       </CardContent>
