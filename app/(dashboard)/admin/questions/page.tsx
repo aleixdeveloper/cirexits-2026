@@ -19,9 +19,13 @@ export default async function QuestionPage() {
   }
 
   const questions = await getQuestionsWithStats();
-  const sortedQuestions = questions.sort((a, b) =>
-    a.question.localeCompare(b.question)
-  );
+  //questions starts with {number}. {question} so is sorted alphabetically
+  //extract number, convert it into number and sort
+  const sortedQuestions = questions.sort((a, b) => {
+    const aNum = parseInt(a.question.split('.')[0]);
+    const bNum = parseInt(b.question.split('.')[0]);
+    return aNum - bNum;
+  });
   return (
     <Card>
       <CardHeader>
